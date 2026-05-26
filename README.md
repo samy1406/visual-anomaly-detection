@@ -6,9 +6,9 @@
 
 ---
 
-## 🧩 Problem Statement
+## 🧩 Problem Statement 
 
-Traditional quality control in manufacturing relies on manual inspection — slow, expensive, and inconsistent. This project trains a model **only on normal (defect-free) images** and detects anomalies at inference time, without any labeled defect data.
+Traditional quality control in manufacturing relies on manual inspection slow, expensive, and inconsistent. This project trains a model **only on normal (defect-free) images** and detects anomalies at inference time, without any labeled defect data.
 
 **Key challenge:** No defect labels during training. The model must learn "what normal looks like" and flag deviations.
 
