@@ -15,7 +15,7 @@ class MVTecDataset(Dataset):
         self.image_paths = []
         self.labels = []
         self.mask_paths = []
-        self.dataset_path = "data"
+        self.dataset_path = os.path.join(root, category)
         
         self._load_dataset()  # YOU implement this
 
@@ -25,6 +25,7 @@ class MVTecDataset(Dataset):
         # test  → good/ + defect folders
         # YOU: derive label from folder name
         # YOU: find corresponding mask path (or handle missing for good/)
+        
         split_dir = os.path.join(self.dataset_path, self.split)
         for root, dirs, files in os.walk(split_dir):
             for file in files:
@@ -65,15 +66,12 @@ class MVTecDataset(Dataset):
                     if not os.path.exists(mask_path):
                         mask_path = None
 
-                image_paths.append(img_path)
-                mask_paths.append(mask_path)
-                labels.append(is_anomaly)
+                self.image_paths.append(img_path)
+                self.mask_paths.append(mask_path)
+                self.labels.append(is_anomaly)
 
-        # Store or return the gathered data
-        self.image_paths = image_paths
-        self.mask_paths = mask_paths
-        self.labels = labels
-        print(self.image_paths, self.mask_paths, self.labels)
+    
+        # print(self.image_paths, self.mask_paths, self.labels)
 
     def __len__(self):
         pass  # YOU
